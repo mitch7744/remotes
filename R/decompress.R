@@ -22,7 +22,7 @@ source_pkg <- function(path, subdir = NULL, before_install = NULL) {
   if (file.exists(config_path)) {
     Sys.chmod(config_path, "777")
   }
-  print('before install start')
+
   # Call before_install for bundles (if provided)
   if (!is.null(before_install)) {
     if (!is.null(bundle)) {
@@ -31,7 +31,7 @@ source_pkg <- function(path, subdir = NULL, before_install = NULL) {
       before_install(path, pkg_path)
     }
   }
-  print('before install done')
+
   pkg_path
 }
 
