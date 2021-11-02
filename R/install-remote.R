@@ -24,6 +24,7 @@ install_remote <- function(remote,
                            build_vignettes,
                            repos,
                            type,
+                           before_install=NULL,
                            ...) {
 
   stopifnot(is.remote(remote))
@@ -60,7 +61,7 @@ install_remote <- function(remote,
 
   on.exit(unlink(bundle), add = TRUE)
 
-  source <- source_pkg(bundle, subdir = remote$subdir)
+  source <- source_pkg(bundle, subdir = remote$subdir, before_install=before_install)
   on.exit(unlink(source, recursive = TRUE), add = TRUE)
 
   update_submodules(source, remote$subdir, quiet)
